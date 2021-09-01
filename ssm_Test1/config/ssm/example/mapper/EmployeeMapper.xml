@@ -4,9 +4,18 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ssm.example.mapper.EmployeeMapper">
     <select id="selectEmployeeById" resultType="ssm.example.pojo.Employee">
-        SELECT id,last_Name lastName,email,gender  FROM tbl_employee WHERE id=#{id}
+        SELECT id,last_Name lastName,email,gender  FROM tbl_employee WHERE id=#{id};
     </select>
     <select id="selectEmployees" resultType="ssm.example.pojo.Employee">
-        SELECT id,last_Name lastName,email,gender  FROM tbl_employee
+        SELECT id,last_Name lastName,email,gender  FROM tbl_employee;
     </select>
+    <insert id="addOneEmployee" parameterType="employee">
+        INSERT INTO tbl_employee(last_name,email,gender) VALUES(#{lastName},#{email},#{gender});
+    </insert>
+    <delete id="deleteEmployeeById" parameterType="_int">
+        DELETE FROM tbl_employee WHERE id=#{id};
+    </delete>
+    <update id="updateEmployeeById" parameterType="employee">
+        UPDATE tbl_employee SET last_name=#{lastName},email=#{email},gender=#{gender} WHERE id=#{id};
+    </update>
 </mapper>
