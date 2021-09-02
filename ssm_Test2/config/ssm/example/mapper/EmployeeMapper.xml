@@ -1,0 +1,8 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ssm.example.mapper.EmployeeMapper">
+    <select id="selectEmployee" resultType="employee">
+        select t.id,t.last_name lastName,t.email,t.gender from tbl_employee t;
+    </select>
+</mapper>
