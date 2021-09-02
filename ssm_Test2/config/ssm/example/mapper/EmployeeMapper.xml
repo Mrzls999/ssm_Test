@@ -2,7 +2,105 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ssm.example.mapper.EmployeeMapper">
-    <select id="selectEmployee" resultType="employee">
+<!--    查询所有员工信息，不包括部门信息-->
+    <select id="selectEmployees" resultType="employee">
         select t.id,t.last_name lastName,t.email,t.gender from tbl_employee t;
+    </select>
+<!--    查询某员工信息，包括其部门信息 级联映射-->
+    <resultMap id="EmployeeAndDeptBase" type="employee">
+        <!--        主键列的映射-->
+        <id column="eid" property="id"/>
+        <!--        普通列的映射-->
+        <result column="last_name" property="lastName" />
+        <result column="email" property="email" />
+        <result column="gender" property="gender"/>
+        <!--        级联映射-->
+        <result column="did" property="dept.id"/>
+        <result column="dept_name" property="dept.deptName"/>
+    </resultMap>
+    <select id="selectEmployeeById" resultMap="EmployeeAndDeptBase">
+        SELECT TE.id eid,
+               TE.last_name,
+               TE.email,
+               TE.gender,
+               TD.id did,
+               TD.dept_name
+        FROM tbl_employee TE
+        INNER JOIN tbl_dept TD
+        ON TE.DEPT_ID = TD.ID
+        WHERE TE.id=#{id};
+    </select>
+<!--    查询某员工信息，包括其部门信息通过association映射-->
+    <resultMap id="EmployeeAndDeptBaseByAssociation" type="employee">
+        <!--        主键列的映射-->
+        <id column="eid" property="id"/>
+        <!--        普通列的映射-->
+        <result column="last_name" property="lastName" />
+        <result column="email" property="email" />
+        <result column="gender" property="gender"/>
+        <!--        通过association映射-->
+        <association property="dept" javaType="ssm.example.pojo.Dept">
+            <id column="did" property="id" />
+            <result column="dept_name" property="deptName"/>
+        </association>
+    </resultMap>
+    <select id="selectEmployeeByIdAssociation" resultMap="EmployeeAndDeptBaseByAssociation">
+        SELECT TE.id eid,
+               TE.last_name,
+               TE.email,
+               TE.gender,
+               TD.id did,
+               TD.dept_name
+        FROM tbl_employee TE
+        INNER JOIN tbl_dept TD
+        ON TE.DEPT_ID = TD.ID
+        WHERE TE.id=#{id};
+    </select>
+<!--    查询某部门信息，及所有员工，通过association映射-->
+    <resultMap id="EmployeeAndDeptBaseByDeptId" type="employee">
+        <!--        主键列的映射-->
+        <id column="eid" property="id"/>
+        <!--        普通列的映射-->
+        <result column="last_name" property="lastName" />
+        <result column="email" property="email" />
+        <result column="gender" property="gender"/>
+        <!--        通过association映射-->
+        <association property="dept" javaType="ssm.example.pojo.Dept">
+            <id column="did" property="id" />
+            <result column="dept_name" property="deptName"/>
+        </association>
+    </resultMap>
+    <select id="selectEmployeeByDeptId" resultMap="EmployeeAndDeptBaseByDeptId">
+        SELECT TE.id eid,
+               TE.last_name,
+               TE.email,
+               TE.gender,
+               TD.id did,
+               TD.dept_name
+        FROM tbl_employee TE
+        INNER JOIN tbl_dept TD
+        ON TE.DEPT_ID = TD.ID
+        WHERE TD.id=#{id};
+    </select>
+<!--    分步，查询某部门信息，及其所有员工-->
+    <resultMap id="selectEmployeeByAssociationStep" type="employee">
+        <id column="eid" property="id"/>
+        <result column="last_name" property="lastName"/>
+        <result column="email" property="email"/>
+        <result column="gender" property="gender"/>
+        <association property="dept" select="ssm.example.mapper.DeptMapper.selectDeptById" column="did">
+        </association>
+    </resultMap>
+    <select id="selectEmployeeByStep" resultMap="selectEmployeeByAssociationStep">
+        SELECT TE.id eid,
+               TE.last_name,
+               TE.email,
+               TE.gender,
+               TD.id did,
+               TD.dept_name
+        FROM tbl_employee TE
+        INNER JOIN tbl_dept TD
+        ON TE.DEPT_ID = TD.ID
+        WHERE TD.id=#{id};
     </select>
 </mapper>
