@@ -9,4 +9,9 @@
     <select id="showCreateTable" resultMap="createTableMap">
         show create table ${tableName}
     </select>
+    <select id="showCreateTables" resultMap="createTableMap">
+        <foreach collection="tableNames" item="tableName"><!--这种方式是不行的，只能执行第一条sql，不行，可以变通一下，多次传入参数，不一次传入，多次执行这个方法-->
+            show create table ${tableName};
+        </foreach>
+    </select>
 </mapper>

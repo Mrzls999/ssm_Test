@@ -13,6 +13,8 @@ import ssm.example.pojo.CreateTable;
 import ssm.example.pojo.Dept;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -41,7 +43,15 @@ public class DeptMapperTest {
     public void showCreateTable() {
         SqlSession sqlSession = build.openSession();
         CreateTableMapper mapper = sqlSession.getMapper(CreateTableMapper.class);
-        CreateTable tableName = mapper.showCreateTable("tbl_dept");
-        System.out.println(tableName);
+        CreateTable tbl_dept = mapper.showCreateTable("tbl_employee");
+        System.out.println(tbl_dept);
+        //这样只能执行第一条sql，不行，可以变通一下，多次传入参数，不一次传入，多次执行这个方法
+//        List<String> tableNames = new ArrayList<>();
+//        tableNames.add("tbl_employee");
+//        tableNames.add("tbl_dept");
+//        List<CreateTable> createTables = mapper.showCreateTables(tableNames);
+//        for (CreateTable createTable : createTables) {
+//            System.out.println(createTable);
+//        }
     }
 }
