@@ -1,0 +1,12 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ssm.example.mapper.CreateTableMapper">
+    <resultMap id="createTableMap" type="createTable">
+        <id column="Table" property="table"/>
+        <result column="Create Table" property="CreateTable"/>
+    </resultMap>
+    <select id="showCreateTable" resultMap="createTableMap">
+        show create table ${tableName}
+    </select>
+</mapper>

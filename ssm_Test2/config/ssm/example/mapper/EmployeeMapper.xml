@@ -4,7 +4,7 @@
 <mapper namespace="ssm.example.mapper.EmployeeMapper">
 <!--    查询所有员工信息，不包括部门信息-->
     <select id="selectEmployees" resultType="employee">
-        select t.id,t.last_name lastName,t.email,t.gender from tbl_employee t;
+        select t.id,t.last_name lastName,t.email,t.gender from tbl_employee t
     </select>
 <!--    查询某员工信息，包括其部门信息 级联映射-->
     <resultMap id="EmployeeAndDeptBase" type="employee">
@@ -28,7 +28,7 @@
         FROM tbl_employee TE
         INNER JOIN tbl_dept TD
         ON TE.DEPT_ID = TD.ID
-        WHERE TE.id=#{id};
+        WHERE TE.id=#{id}
     </select>
 <!--    查询某员工信息，包括其部门信息通过association映射-->
     <resultMap id="EmployeeAndDeptBaseByAssociation" type="employee">
@@ -54,7 +54,7 @@
         FROM tbl_employee TE
         INNER JOIN tbl_dept TD
         ON TE.DEPT_ID = TD.ID
-        WHERE TE.id=#{id};
+        WHERE TE.id=#{id}
     </select>
 <!--    查询某部门信息，及所有员工，通过association映射-->
     <resultMap id="EmployeeAndDeptBaseByDeptId" type="employee">
@@ -80,7 +80,7 @@
         FROM tbl_employee TE
         INNER JOIN tbl_dept TD
         ON TE.DEPT_ID = TD.ID
-        WHERE TD.id=#{id};
+        WHERE TD.id=#{id}
     </select>
 <!--    分步，查询某部门信息，及其所有员工-->
     <resultMap id="selectEmployeeByAssociationStep" type="employee">
@@ -101,6 +101,6 @@
         FROM tbl_employee TE
         INNER JOIN tbl_dept TD
         ON TE.DEPT_ID = TD.ID
-        WHERE TD.id=#{id};
+        WHERE TD.id=#{id}
     </select>
 </mapper>

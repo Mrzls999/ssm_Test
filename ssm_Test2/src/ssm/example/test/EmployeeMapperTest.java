@@ -1,5 +1,7 @@
 package ssm.example.test;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -99,6 +101,36 @@ public class EmployeeMapperTest {
         List<Employee> employees = mapper.selectEmployeeByStep(3);
         for (Employee employee : employees) {
             System.out.println(employee.getLastName());
+        }
+    }
+
+    /**
+     * 分页，查询所有员工信息
+     */
+    @Test
+    public void pageSelectAllEmployee(){
+        SqlSession sqlSession = build.openSession();
+        EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
+        PageHelper.startPage(1,4);
+        List<Employee> employees = mapper.selectEmployees();
+        PageInfo<Employee> employeePageInfo = new PageInfo<>(employees,3);
+        for (Employee employee : employees) {
+            System.out.println(employee);
+        }
+        System.out.println("当前页码：" + employeePageInfo.getPageNum());
+        System.out.println("总页码：" + employeePageInfo.getPages());
+        System.out.println("总数据条数：" + employeePageInfo.getTotal());
+        System.out.println("每页显示条数：" + employeePageInfo.getPageSize());
+
+        System.out.println("是否为第一页：" + employeePageInfo.isIsFirstPage());
+        System.out.println("是否为最后一页：" + employeePageInfo.isIsLastPage());
+        System.out.println("是否有上一页：" + employeePageInfo.isHasPreviousPage());
+        System.out.println("是否有下一页：" + employeePageInfo.isHasNextPage());
+
+        //获取分页业务逻辑
+        int[] nums = employeePageInfo.getNavigatepageNums();
+        for (int num : nums) {
+            System.out.println("num = " + num);
         }
     }
 }

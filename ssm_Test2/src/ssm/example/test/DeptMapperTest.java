@@ -7,7 +7,9 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import ssm.example.mapper.CreateTableMapper;
 import ssm.example.mapper.DeptMapper;
+import ssm.example.pojo.CreateTable;
 import ssm.example.pojo.Dept;
 
 import java.io.InputStream;
@@ -33,5 +35,13 @@ public class DeptMapperTest {
         DeptMapper mapper = sqlSession.getMapper(DeptMapper.class);
         Dept dept = mapper.selectDeptById(1);
         System.out.println(dept);
+    }
+
+    @Test
+    public void showCreateTable() {
+        SqlSession sqlSession = build.openSession();
+        CreateTableMapper mapper = sqlSession.getMapper(CreateTableMapper.class);
+        CreateTable tableName = mapper.showCreateTable("tbl_dept");
+        System.out.println(tableName);
     }
 }
