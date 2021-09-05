@@ -43,6 +43,7 @@ public class EmployeeMapperTest {
             System.out.println(employee);
         }
     }
+
     /**
      * 查询某员工信息，包括其部门信息 通过级联映射
      */
