@@ -1,5 +1,7 @@
 package ssm.example.pojo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  * @author zls
  * @date 2021/9/6 9:26:45
@@ -9,12 +11,23 @@ public class Employee {
     private String id;
     private String name;
 
+    private Dept dept;
+
     @Override
     public String toString() {
         return "Employee{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
+                ", dept=" + dept +
                 '}';
+    }
+
+    public Dept getDept() {
+        return dept;
+    }
+
+    public void setDept(Dept dept) {
+        this.dept = dept;
     }
 
     public Employee() {
