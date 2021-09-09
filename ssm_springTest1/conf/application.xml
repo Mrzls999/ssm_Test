@@ -3,11 +3,12 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
-<!--    <bean id="dept" class="ssm.example.pojo.Dept">-->
-<!--    </bean>-->
-    <bean id="emp1" class="ssm.example.pojo.Employee">
+    <bean id="dept" class="ssm.example.pojo.Dept">
+        <property name="id" value="1001"/>
+        <property name="deptName" value="后勤部"/>
+    </bean>
+    <bean id="emp1" class="ssm.example.pojo.Employee" autowire="byName">
         <property name="id" value="001"/>
         <property name="name" value="zls" />
-<!--        <property name="dept" ref="dept"/>-->
     </bean>
 </beans>

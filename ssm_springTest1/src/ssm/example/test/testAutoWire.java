@@ -12,7 +12,7 @@ import ssm.example.pojo.Employee;
  */
 public class testAutoWire {
     @Test
-    public void testAutoWire(){
+    public void testAutoWire1(){
         ApplicationContext context = new ClassPathXmlApplicationContext("application.xml");
         Employee emp1 = context.getBean("emp1", Employee.class);
         System.out.println("emp1 = " + emp1);
