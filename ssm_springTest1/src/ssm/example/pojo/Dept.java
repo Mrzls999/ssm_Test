@@ -1,10 +1,13 @@
 package ssm.example.pojo;
 
+import org.springframework.stereotype.Component;
+
 /**
  * @author zls
  * @date 2021/9/6 22:27:41
  * @description XXX
  */
+@Component
 public class Dept {
     private int id;
     private String deptName;

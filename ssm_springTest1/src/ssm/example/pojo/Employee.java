@@ -1,12 +1,13 @@
 package ssm.example.pojo;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * @author zls
  * @date 2021/9/6 9:26:45
  * @description XXX
  */
+@Component
 public class Employee {
     private String id;
     private String name;

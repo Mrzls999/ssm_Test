@@ -3,6 +3,7 @@ package ssm.example.test;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import ssm.example.annotation.excludeAnnotation;
 import ssm.example.pojo.Employee;
 
 /**
@@ -10,6 +11,7 @@ import ssm.example.pojo.Employee;
  * @date 2021/9/6 22:52:17
  * @description XXX
  */
+@excludeAnnotation
 public class testAutoWire {
     @Test
     public void testAutoWire1(){

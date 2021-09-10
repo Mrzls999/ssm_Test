@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="dept" class="ssm.example.pojo.Dept">
-        <property name="id" value="1001"/>
-        <property name="deptName" value="后勤部"/>
-    </bean>
-    <bean id="emp1" class="ssm.example.pojo.Employee" autowire="byName">
-        <property name="id" value="001"/>
-        <property name="name" value="zls" />
-    </bean>
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+<!--    <bean id="dept" class="ssm.example.pojo.Dept">-->
+<!--        <property name="id" value="1001"/>-->
+<!--        <property name="deptName" value="后勤部"/>-->
+<!--    </bean>-->
+<!--    <bean id="emp1" class="ssm.example.pojo.Employee" autowire="byName">-->
+<!--        <property name="id" value="001"/>-->
+<!--        <property name="name" value="zls" />-->
+<!--    </bean>-->
+    <context:component-scan base-package="ssm.example">
+        <context:exclude-filter type="annotation" expression="ssm.example.annotation.excludeAnnotation"/>
+    </context:component-scan>
 </beans>

@@ -13,10 +13,6 @@ import ssm.example.pojo.CreateTable;
 import ssm.example.pojo.Dept;
 
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.*;
 
 public class DeptMapperTest {
     SqlSessionFactory build;
