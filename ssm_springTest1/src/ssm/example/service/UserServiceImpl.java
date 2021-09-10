@@ -16,7 +16,7 @@ import java.io.InputStream;
  * @date 2021/9/10 12:33:42
  * @description XXX
  */
-@Service
+@Service//("userServiceImpl")
 public class UserServiceImpl implements UserService {
     String resource = "mybatis-conf.xml";
 

@@ -2,6 +2,8 @@ package ssm.example.controller;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -16,14 +18,15 @@ import java.io.IOException;
  */
 @Controller("userController")
 public class UserServlet {
-    @Autowired
-    private UserService userService;
+    @Autowired(required = true)
+    @Qualifier("userServiceImpl1")
+    private UserService userServiceImpl;
     /**
      * 得到用户性名
      */
     public void getUserName(){
         try {
-            String userName = userService.getUserName(1);
+            String userName = userServiceImpl.getUserName(1);
             System.out.println(userName);
         } catch (IOException e) {
             e.printStackTrace();
