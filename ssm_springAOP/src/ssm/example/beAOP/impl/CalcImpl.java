@@ -17,16 +17,18 @@ public class CalcImpl implements Calc {
      */
     @Override
     public double add(double num1, double num2) {
+        System.out.println("加法");
         return num1+num2;
     }
     /**
-     * 加
+     * 减
      * @param num1
      * @param num2
      * @return
      */
     @Override
     public double sub(double num1, double num2) {
+        System.out.println("减法");
         return num1-num2;
     }
     /**
@@ -37,6 +39,7 @@ public class CalcImpl implements Calc {
      */
     @Override
     public double mul(double num1, double num2) {
+        System.out.println("乘法");
         return num1*num2;
     }
     /**
@@ -47,6 +50,7 @@ public class CalcImpl implements Calc {
      */
     @Override
     public double div(double num1, double num2) {
+        System.out.println("除法");
         return num1/num2;
     }
 }
