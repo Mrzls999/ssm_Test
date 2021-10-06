@@ -1,7 +1,6 @@
 package ssm.example.beAOP.impl;
 
 import ssm.example.beAOP.log.MyLogging;
-
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
