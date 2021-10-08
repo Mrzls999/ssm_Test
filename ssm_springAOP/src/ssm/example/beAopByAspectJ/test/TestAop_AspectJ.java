@@ -22,7 +22,7 @@ public class TestAop_AspectJ {
          * }
          * 所以这个地方用的是，getBean("calcImpl", Calc.class);返回的是 接口类型 正好适合动态代理
          */
-        Calc calc = applicationContext.getBean("calcImpl", Calc.class);
+        Calc calc = applicationContext.getBean("calcImpl", Calc.class);//默认的规则，装配时byId的id是 类名首字母小写
 
         calc.div(1,2);
     }
