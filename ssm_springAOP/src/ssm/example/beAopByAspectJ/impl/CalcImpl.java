@@ -20,6 +20,7 @@ public class CalcImpl implements Calc {
     @Override
     public double add(double num1, double num2) {
         System.out.println("加法");
+//        double a = 1/0;
         return num1+num2;
     }
     /**

@@ -24,6 +24,6 @@ public class TestAop_AspectJ {
          */
         Calc calc = applicationContext.getBean("calcImpl", Calc.class);//默认的规则，装配时byId的id是 类名首字母小写
 
-        calc.div(1,2);
+        calc.add(1,2);
     }
 }
