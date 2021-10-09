@@ -14,7 +14,7 @@ public class TestAop_AspectJ {
     public static void main(String[] args) {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application_Aop.xml");
 
-        /**
+        /*
          * @Override
          * public <T> T getBean(String name, Class<T> requiredType) throws BeansException {
          * 	 assertBeanFactoryActive();
