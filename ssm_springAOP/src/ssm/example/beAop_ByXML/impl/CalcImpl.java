@@ -1,6 +1,5 @@
 package ssm.example.beAop_ByXML.impl;
 
-import org.springframework.stereotype.Component;
 import ssm.example.beAop_ByXML.Calc;
 
 /**
@@ -8,7 +7,6 @@ import ssm.example.beAop_ByXML.Calc;
  * @date 2021/9/16 10:28:42
  * @description 加减乘除的实现
  */
-@Component
 public class CalcImpl implements Calc {
 
     /**

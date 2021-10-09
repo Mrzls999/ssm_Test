@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       https://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--    类似于@Component-->
+    <!--    装配bean-->
+    <bean id="calcImpl" class="ssm.example.beAop_ByXML.impl.CalcImpl" />
+    <!--    装配bean的切面部分-->
+    <bean id="myLogging" class="ssm.example.beAop_ByXML.aop.MyLogging" />
+    <bean id="calcImpl_Verify" class="ssm.example.beAop_ByXML.aop.CalcImpl_Verify" />
+    <!--    类似于@Aspect
+        ①定义切入点表达式
+        ②定义切面
+        ③定义通知
+    -->
+    <aop:config>
+<!--        定义切入点表达式 注意，如果此处的表达式，写错了，编译不会报错，运行时，会出现-->
+        <aop:pointcut id="myPoint" expression="execution(* ssm.example.beAop_ByXML.impl.*.*(..))"/>
+<!--        定义切面-->
+        <aop:aspect id="myLogging" ref="myLogging" order="0" >
+<!--            前置通知-->
+            <aop:before method="methodBefore" pointcut-ref="myPoint" />
+<!--            后置通知-->
+            <aop:after method="methodAfter" pointcut-ref="myPoint"/>
+<!--            返回通知-->
+            <aop:after-returning method="methodAfterReturning" pointcut-ref="myPoint" returning="rs"/>
+<!--            异常通知-->
+<!--            <aop:after-throwing method="methodAfterThrowing" pointcut-ref="myPoint" throwing="ex"/>-->
+<!--&lt;!&ndash;            环绕通知&ndash;&gt;-->
+<!--            <aop:around method="aroundMethod" pointcut-ref="myPoint"/>-->
+        </aop:aspect>
+        <aop:aspect id="calcImpl_Verify" ref="calcImpl_Verify" order="1">
+<!--            前置通知-->
+            <aop:before method="methodBeforeV" pointcut="execution(* ssm.example.beAop_ByXML.impl.*.*(..))"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>

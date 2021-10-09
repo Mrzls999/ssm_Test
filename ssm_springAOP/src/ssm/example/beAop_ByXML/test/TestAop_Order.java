@@ -11,10 +11,8 @@ import ssm.example.beAop_ByXML.Calc;
  */
 public class TestAop_Order {
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application_Aop_Verify.xml");
-
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application_Aop_ByXML.xml");
         Calc calc = applicationContext.getBean("calcImpl", Calc.class);//默认的规则，装配时byId的id是 类名首字母小写
-
         calc.add(1,2);
     }
 }
