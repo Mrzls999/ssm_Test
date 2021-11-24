@@ -7,7 +7,7 @@ import ssm.example.beAop_ByXML.Calc;
 /**
  * @author zls
  * @date 2021/10/8 9:23:52
- * @description XXX
+ * @description XX
  */
 public class TestAop_Order {
     public static void main(String[] args) {
