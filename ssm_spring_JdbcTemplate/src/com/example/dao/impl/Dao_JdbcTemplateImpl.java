@@ -36,7 +36,7 @@ public class Dao_JdbcTemplateImpl implements Dao_JdbcTemplate {
      */
 
     @Autowired
-    @Qualifier("jdbcTemplate")
+    @Qualifier("jdbcTemplate")//此处的值是 3.装配JdbcTemplate处的id值
     private JdbcTemplate jdbcTemplate;
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
