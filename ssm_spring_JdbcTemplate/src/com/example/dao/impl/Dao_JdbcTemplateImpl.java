@@ -44,7 +44,7 @@ public class Dao_JdbcTemplateImpl implements Dao_JdbcTemplate {
     }
 
     @Override
-    //Dao模式查询所有部门信息
+    //Dao模式下查询所有部门信息
     public List<Dept> getAllDept() {
         String sql = "select * from tbl_dept";
         RowMapper<Dept> rowMapper = new BeanPropertyRowMapper<>(Dept.class);
