@@ -21,7 +21,7 @@ public class Dao_JdbcTemplateImpl implements Dao_JdbcTemplate {
 
 //    /**
 //     * 方式1.不加注解
-//     * 在application_JdbcTemplate.xml中将Dao_JdbcTemplateImpl注入到spring容器中，并将JdbcTemplate作为属性添加进去
+//     * 在application_JdbcTemplate.xml中将 Dao_JdbcTemplateImpl 注入到spring容器中，并将JdbcTemplate作为属性添加进去
 //     * 由于此种方式是set注入，所以加了set方法
 //     */
 //    private JdbcTemplate jdbcTemplate;

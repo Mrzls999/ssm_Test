@@ -21,7 +21,7 @@
         <property name="dataSource" ref="jdbcTemplateDataSource"/>
     </bean>
 
-<!--&lt;!&ndash;    方式1&ndash;&gt;-->
+<!--   方式1-->
 <!--    <bean id="dao_jdbcTemplate" class="com.example.dao.impl.Dao_JdbcTemplateImpl">-->
 <!--        <property name="jdbcTemplate" ref="jdbcTemplate"/>-->
 <!--    </bean>-->
