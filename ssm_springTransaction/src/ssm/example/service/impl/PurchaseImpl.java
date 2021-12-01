@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import ssm.example.dao.BookShopDao;
 import ssm.example.dao.impl.BookShopDaoImpl;
 import ssm.example.service.Purchase;
 
@@ -13,19 +14,19 @@ import ssm.example.service.Purchase;
  * @date 2021/11/30 15:08:39
  * @description XXX
  */
-@Service("purchaseImpl")
+@Service("purchase")
 public class PurchaseImpl implements Purchase {
 
     @Autowired
-    @Qualifier("bookShopDaoImpl")
-    public BookShopDaoImpl bookShopDaoImpl;
+    @Qualifier("bookShopDao")
+    public BookShopDao bookShopDao;
 
     @Override
     //买书->查询book价格->修改库存->修改余额
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void purchase(String username, String isbn) {
-        Integer bookPriceByIsbn = bookShopDaoImpl.findBookPriceByIsbn(isbn);
-        bookShopDaoImpl.updateBookStock(isbn);
-        bookShopDaoImpl.updateUserAccount(username,bookPriceByIsbn);
+        Integer bookPriceByIsbn = bookShopDao.findBookPriceByIsbn(isbn);
+        bookShopDao.updateBookStock(isbn);
+        bookShopDao.updateUserAccount(username,bookPriceByIsbn);
     }
 }

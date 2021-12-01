@@ -14,7 +14,7 @@ import java.math.BigDecimal;
  * @date 2021/11/30 15:06:56
  * @description XXX
  */
-@Repository("bookShopDaoImpl")
+@Repository("bookShopDao")
 public class BookShopDaoImpl implements BookShopDao {
 
     @Autowired
