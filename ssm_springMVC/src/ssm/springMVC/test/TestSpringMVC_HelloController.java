@@ -14,6 +14,6 @@ public class TestSpringMVC_HelloController {
     @RequestMapping(value="hello")
     public String hello_World(){
         System.out.println("===>helloController--->hello");
-        return "success";
+        return "success";//逻辑视图名
     }
 }
