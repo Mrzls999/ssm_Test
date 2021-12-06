@@ -16,4 +16,5 @@ public class TestSpringMVC_HelloController {
         System.out.println("===>helloController--->hello");
         return "success";//逻辑视图名
     }
+
 }
