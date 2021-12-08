@@ -32,7 +32,6 @@ public class UserServlet {
             e.printStackTrace();
         }
     }
-
     @Test
     public void init(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application.xml");
