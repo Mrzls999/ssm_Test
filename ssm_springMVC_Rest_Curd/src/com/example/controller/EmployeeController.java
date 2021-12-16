@@ -18,8 +18,13 @@ import java.util.Collection;
 @Controller
 public class EmployeeController {
 
+    private final EmployeeDao employeeDao;
+
     @Autowired
-    private EmployeeDao employeeDao;
+    public EmployeeController(EmployeeDao employeeDao){
+        this.employeeDao=employeeDao;
+    }
+
 
     @RequestMapping(value = "emp_Controller")
     public ModelAndView getAllEmployees(){
