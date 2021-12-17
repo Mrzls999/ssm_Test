@@ -30,10 +30,13 @@
             <td>${emp.gender==1?'男':'女'}</td>
             <td>${emp.department.departmentName}</td>
             <td>
-                <a href="#">Add</a>&nbsp;|&nbsp;<a href="#">Delete</a>
+                <a href="#">Edit</a>&nbsp;|&nbsp;<a href="#">Delete</a>
             </td>
         </tr>
     </c:forEach>
+    <tr id="addEmp">
+        <td colspan="6"><a href="${pageContext.request.contextPath}/getDep">Add</a></td>
+    </tr>
 </table>
 </body>
 <style>
@@ -48,6 +51,9 @@
     }
     h2{
         text-align: center;
+    }
+    #addEmp{
+        text-align: right;
     }
 </style>
 </html>

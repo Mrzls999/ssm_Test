@@ -11,6 +11,6 @@
     <title>$Title$</title>
   </head>
   <body>
-  <a href="${pageContext.request.contextPath}/emp_Controller">查询所有员工消息</a>
+  <a href="${pageContext.request.contextPath}/getEmps">查询所有员工消息</a>
   </body>
 </html>

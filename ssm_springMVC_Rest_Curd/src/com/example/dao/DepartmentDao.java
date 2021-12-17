@@ -8,7 +8,7 @@ import com.example.entities.Department;
 import org.springframework.stereotype.Repository;
 
 
-@Repository
+@Repository("departmentDao")
 public class DepartmentDao {
 
 	private static Map<Integer, Department> departments = null;
