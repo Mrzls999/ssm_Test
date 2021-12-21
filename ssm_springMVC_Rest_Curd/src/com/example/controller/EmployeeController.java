@@ -7,6 +7,7 @@ import com.example.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -83,6 +84,22 @@ public class EmployeeController {
         map.put("genders",genders);
         map.put("employee",new Employee());
 //        map.put("command",new Employee());
+        return "input";
+    }
+
+
+    @RequestMapping(value = "goEditEmpView/{id}",method = RequestMethod.GET)
+    public String goEditEmpView(@PathVariable("id") Integer id,Map<String,Object> map){
+        Employee employee = employeeDao.get(id);
+        //获取部门信息
+        Collection<Department> departments = departmentDao.getDepartments();
+        map.put("departments",departments);
+        //存放性别信息
+        HashMap<String, String> genders = new HashMap<>();
+        genders.put("1","男");
+        genders.put("0","女");
+        map.put("genders",genders);
+        map.put("employee",employee);
         return "input";
     }
 

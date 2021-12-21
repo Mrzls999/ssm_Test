@@ -30,7 +30,7 @@
             <td>${emp.gender==1?'男':'女'}</td>
             <td>${emp.department.departmentName}</td>
             <td>
-                <a href="#">Edit</a>&nbsp;|&nbsp;<a href="#">Delete</a>
+                <a href="${pageContext.request.contextPath}/goEditEmpView/${emp.id}">Edit</a>&nbsp;|&nbsp;<a href="#">Delete</a>
             </td>
         </tr>
     </c:forEach>
