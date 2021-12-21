@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -66,14 +67,22 @@ public class EmployeeController {
     }
 
     /**
-     * 获取部门信息
+     * 获取部门和性别信息
      * @param map
      * @return
      */
     @RequestMapping(value = "getDep",method = RequestMethod.GET)
     public String getAllDep(Map<String,Object> map){
+        //获取部门信息
         Collection<Department> departments = departmentDao.getDepartments();
         map.put("departments",departments);
+        //存放性别信息
+        HashMap<String, String> genders = new HashMap<>();
+        genders.put("1","男");
+        genders.put("0","女");
+        map.put("genders",genders);
+        map.put("employee",new Employee());
+//        map.put("command",new Employee());
         return "input";
     }
 
