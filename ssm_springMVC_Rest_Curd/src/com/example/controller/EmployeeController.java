@@ -56,11 +56,11 @@ public class EmployeeController {
     }
 
     /**
-     * 保存、修改员工信息
+     * 修改员工信息
      * @param employee
      * @return
      */
-    @RequestMapping(value = "saveEmp")//method=Request.Method.POST method=Request.Method.PUT……
+    @RequestMapping(value = "saveEmp",method = RequestMethod.POST)
     public String saveEmp(Employee employee){
         System.out.println(employee);
         employeeDao.save(employee);
@@ -107,5 +107,17 @@ public class EmployeeController {
         map.put("genders",genders);
         map.put("employee",employee);
         return "input";
+    }
+
+
+    /**
+     * 修改员工信息
+     * @param employee
+     * @return
+     */
+    @RequestMapping(value = "saveEmp",method = RequestMethod.PUT)
+    public String editEmp(Employee employee){
+        employeeDao.save(employee);
+        return "redirect:/getEmps";
     }
 }

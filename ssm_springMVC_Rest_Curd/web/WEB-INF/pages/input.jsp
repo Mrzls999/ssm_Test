@@ -24,13 +24,21 @@
 <%--<form:form class="forms" action="${pageContext.request.contextPath}/saveEmp" method="post" modelAttribute="command">--%>
 <form:form class="forms" action="${pageContext.request.contextPath}/saveEmp" method="post" modelAttribute="employee">
     <c:if test="${!yOn}"><%--如果employee的id不为空，则是修改--%>
-        <form:input path="id" /><%--spring的hidden有回显功能，可以发送回去--%>
+        <form:input path="id" hidden="true"/><%--spring的hidden有回显功能，可以发送回去--%>
         <input type="hidden" name="_method" value="PUT"><%--html的hidden没有回显功能--%>
     </c:if>
-    <h2>${yOn?1:0}</h2>
     姓名：<form:input path="lastName" /><br>
     邮箱：<form:input path="email"/><br>
-    性别：<form:radiobuttons path="gender" items="${genders}" checked="${genders.enabled ? 'checked' : ''}"/><br>
+    <c:if test="${!yOn}"><%--修改时性别的默认值为：原emp的值--%>
+        性别：<form:radiobuttons path="gender" items="${genders}" checked="${genders.enabled ? 'checked' : ''}"/><br>
+    </c:if>
+    <c:if test="${yOn}"><%--添加时性别的默认值为：男--%>
+        性别：
+        <label>
+            <input type="radio" name="gender" value="1" checked>男
+            <input type="radio" name="gender" value="0">
+        </label>女<br/>
+    </c:if>
     部门：<form:select path="department.id" items="${departments}" itemValue="id" itemLabel="departmentName" selected="${employee.department.id}"/><br>
     <c:if test="${yOn}">
         <input type="submit" value="添加">
