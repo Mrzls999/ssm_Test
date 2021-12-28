@@ -56,11 +56,11 @@ public class EmployeeController {
     }
 
     /**
-     * 保存员工信息
+     * 保存、修改员工信息
      * @param employee
      * @return
      */
-    @RequestMapping(value = "saveEmp",method = RequestMethod.POST)
+    @RequestMapping(value = "saveEmp")//method=Request.Method.POST method=Request.Method.PUT……
     public String saveEmp(Employee employee){
         System.out.println(employee);
         employeeDao.save(employee);
@@ -88,6 +88,12 @@ public class EmployeeController {
     }
 
 
+    /**
+     * 跳转到修改页面
+     * @param id
+     * @param map
+     * @return
+     */
     @RequestMapping(value = "goEditEmpView/{id}",method = RequestMethod.GET)
     public String goEditEmpView(@PathVariable("id") Integer id,Map<String,Object> map){
         Employee employee = employeeDao.get(id);
@@ -102,5 +108,4 @@ public class EmployeeController {
         map.put("employee",employee);
         return "input";
     }
-
 }

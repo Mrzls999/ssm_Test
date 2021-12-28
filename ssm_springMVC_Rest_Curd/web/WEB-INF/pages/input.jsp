@@ -23,10 +23,11 @@
 <%--使用spring表单标签优化添加页面--%>
 <%--<form:form class="forms" action="${pageContext.request.contextPath}/saveEmp" method="post" modelAttribute="command">--%>
 <form:form class="forms" action="${pageContext.request.contextPath}/saveEmp" method="post" modelAttribute="employee">
-    <c:if test="!${yOn}"><%--如果employee的id不为空，则是修改--%>
+    <c:if test="${!yOn}"><%--如果employee的id不为空，则是修改--%>
         <form:input path="id" /><%--spring的hidden有回显功能，可以发送回去--%>
         <input type="hidden" name="_method" value="PUT"><%--html的hidden没有回显功能--%>
     </c:if>
+    <h2>${yOn?1:0}</h2>
     姓名：<form:input path="lastName" /><br>
     邮箱：<form:input path="email"/><br>
     性别：<form:radiobuttons path="gender" items="${genders}" checked="${genders.enabled ? 'checked' : ''}"/><br>
