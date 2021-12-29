@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -30,17 +32,18 @@ public class EmployeeController {
     @Qualifier("departmentDao")
     private final DepartmentDao departmentDao;
 
+    private final ServletContext application;
     /**
      * 使用构造器注入，防止出现dao
      * @param employeeDao
      * @param departmentDao
      */
     @Autowired
-    public EmployeeController(EmployeeDao employeeDao, DepartmentDao departmentDao){
+    public EmployeeController(EmployeeDao employeeDao, DepartmentDao departmentDao,ServletContext application){
         this.employeeDao=employeeDao;
         this.departmentDao=departmentDao;
+        this.application = application;
     }
-
 
     /**
      * 得到所有员工信息
@@ -51,7 +54,7 @@ public class EmployeeController {
         ModelAndView mav = new ModelAndView();
         Collection<Employee> empList = employeeDao.getAll();
         mav.addObject("empList",empList);
-        mav.setViewName("empList");
+        mav.setViewName("empList");//设置视图名
         return mav;
     }
 
@@ -73,10 +76,23 @@ public class EmployeeController {
      * @return
      */
     @RequestMapping(value = "getDep",method = RequestMethod.GET)
-    public String getAllDep(Map<String,Object> map){
+    public String getAllDep(Map<String,Object> map, HttpSession session){
         //获取部门信息
         Collection<Department> departments = departmentDao.getDepartments();
         map.put("departments",departments);
+        /**
+         * 此处发送到前端页面是request域，如果想放到session域可以这样做：
+         * 在入参那的map后边getAllDep(Map<String,Object> map,HttpSession session)
+         * session.setAttribute("departments",departments);
+         * 如果想放到application域可以这样做：
+         * （application域对应的后端是ServletContext域，整个应用只有一个，所以不能直接写在入参里边【如果写在里边相当于又创建了一个】）
+         *方式1：通过session创建 ServletContext application = session.getServletContext();
+         *方式2：通过springMVC自动注入进来，在属性的位置添加
+         *      @Autowired
+         *      private ServletContext application;
+         *      方法中添加：
+         *      application.setAttribute("departments",departments);
+         */
         //存放性别信息
         HashMap<String, String> genders = new HashMap<>();
         genders.put("1","男");
