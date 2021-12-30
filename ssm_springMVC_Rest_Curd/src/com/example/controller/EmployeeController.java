@@ -136,4 +136,15 @@ public class EmployeeController {
         employeeDao.save(employee);
         return "redirect:/getEmps";
     }
+
+    /**
+     * 利用get请求删除，此方式不是很好。可以利用ajax异步请求
+     * @param id
+     * @return
+     */
+    @RequestMapping(value="delEmp/{id}")
+    public String delEmp(@PathVariable("id") String id){
+        employeeDao.delete(Integer.valueOf(id));
+        return "redirect:/getEmps";
+    }
 }
