@@ -12,6 +12,7 @@
   </head>
   <body>
   <a href="${pageContext.request.contextPath}/getEmps">查询所有员工消息</a><br/>
-  <a href="${pageContext.request.contextPath}/testJson.jsp">testJson</a>
+  <a href="${pageContext.request.contextPath}/testJson.jsp">testJson</a><br/>
+  <a href="${pageContext.request.contextPath}/fileUpload.jsp">文件上传</a><br/>
   </body>
 </html>
