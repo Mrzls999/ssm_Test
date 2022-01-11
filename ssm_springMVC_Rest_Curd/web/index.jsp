@@ -11,6 +11,7 @@
     <title>$Title$</title>
   </head>
   <body>
-  <a href="${pageContext.request.contextPath}/getEmps">查询所有员工消息</a>
+  <a href="${pageContext.request.contextPath}/getEmps">查询所有员工消息</a><br/>
+  <a href="${pageContext.request.contextPath}/testJson.jsp">testJson</a>
   </body>
 </html>
