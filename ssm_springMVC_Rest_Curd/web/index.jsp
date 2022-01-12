@@ -14,5 +14,6 @@
   <a href="${pageContext.request.contextPath}/getEmps">查询所有员工消息</a><br/>
   <a href="${pageContext.request.contextPath}/testJson.jsp">testJson</a><br/>
   <a href="${pageContext.request.contextPath}/fileUpload.jsp">文件上传</a><br/>
+  <a href="${pageContext.request.contextPath}/fileDownload.jsp">文件下载</a><br/>
   </body>
 </html>

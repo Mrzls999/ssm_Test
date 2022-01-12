@@ -11,6 +11,11 @@
     <title>资源下载</title>
 </head>
 <body>
-
+    <div>
+        <a href="${pageContext.request.contextPath}/fileDownload?fileName=写学习需要的报表.sql">写学习需要的报表.sql</a>
+    </div>
 </body>
+<style>
+
+</style>
 </html>
